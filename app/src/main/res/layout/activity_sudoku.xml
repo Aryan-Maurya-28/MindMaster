@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".SudokuActivity"
+    android:background="#E0F2E0"> <!-- Light green background -->
+
+    <!-- Level Selection Screen -->
+    <LinearLayout
+        android:id="@+id/levelSelector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Sudoku"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:fontFamily="sans-serif-black" /> <!-- Changed: Bolder font and color -->
+
+        <Button
+            android:id="@+id/btnEasy"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Easy"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:fontFamily="sans-serif-black"
+            android:textStyle="bold"
+            android:elevation="4dp" /> <!-- Changed: Game button style + elevation -->
+
+        <Button
+            android:id="@+id/btnNormal"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Normal"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:fontFamily="sans-serif-black"
+            android:textStyle="bold"
+            android:elevation="4dp" /> <!-- Changed: Game button style + elevation -->
+
+        <Button
+            android:id="@+id/btnHard"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Hard"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:fontFamily="sans-serif-black"
+            android:textStyle="bold"
+            android:elevation="4dp" /> <!-- Changed: Game button style + elevation -->
+
+    </LinearLayout>
+
+    <!-- Game Container -->
+    <LinearLayout
+        android:id="@+id/gameContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvLevel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Level: Easy"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:fontFamily="sans-serif-medium" /> <!-- Changed: Bolder font and color -->
+
+            <TextView
+                android:id="@+id/tvMistakes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mistakes: 0"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#D32F2F"
+                android:fontFamily="sans-serif-medium" /> <!-- Changed: Bolder font and red color for mistakes -->
+        </LinearLayout>
+
+
+        <com.example.mindmaster.SudokuBoardView
+            android:id="@+id/sudokuBoardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Number Pad -->
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/numberPad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:columnCount="5"
+            app:rowCount="2"
+            app:orientation="horizontal">
+
+            <!-- Changed backgroundTint to blue and added elevation -->
+            <Button android:id="@+id/btnNum1" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" android:text="1" android:layout_margin="2dp" android:backgroundTint="#2196F3" android:textColor="#FFFFFF" android:fontFamily="sans-serif-black" android:textStyle="bold" android:elevation="4dp"/>
+            <Button android:id="@+id/btnNum2" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" android:text="2" android:layout_margin="2dp" android:backgroundTint="#2196F3" android:textColor="#FFFFFF" android:fontFamily="sans-serif-black" android:textStyle="bold" android:elevation="4dp"/>
+            <Button android:id="@+id/btnNum3" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" android:text="3" android:layout_margin="2dp" android:backgroundTint="#2196F3" android:textColor="#FFFFFF" android:fontFamily="sans-serif-black" android:textStyle="bold" android:elevation="4dp"/>
+            <Button android:id="@+id/btnNum4" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" android:text="4" android:layout_margin="2dp" android:backgroundTint="#2196F3" android:textColor="#FFFFFF" android:fontFamily="sans-serif-black" android:textStyle="bold" android:elevation="4dp"/>
+            <Button android:id="@+id/btnNum5" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" android:text="5" android:layout_margin="2dp" android:backgroundTint="#2196F3" android:textColor="#FFFFFF" android:fontFamily="sans-serif-black" android:textStyle="bold" android:elevation="4dp"/>
+            <Button android:id="@+id/btnNum6" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" android:text="6" android:layout_margin="2dp" android:backgroundTint="#2196F3" android:textColor="#FFFFFF" android:fontFamily="sans-serif-black" android:textStyle="bold" android:elevation="4dp"/>
+            <Button android:id="@+id/btnNum7" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" android:text="7" android:layout_margin="2dp" android:backgroundTint="#2196F3" android:textColor="#FFFFFF" android:fontFamily="sans-serif-black" android:textStyle="bold" android:elevation="4dp"/>
+            <Button android:id="@+id/btnNum8" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" android:text="8" android:layout_margin="2dp" android:backgroundTint="#2196F3" android:textColor="#FFFFFF" android:fontFamily="sans-serif-black" android:textStyle="bold" android:elevation="4dp"/>
+            <Button android:id="@+id/btnNum9" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" android:text="9" android:layout_margin="2dp" android:backgroundTint="#2196F3" android:textColor="#FFFFFF" android:fontFamily="sans-serif-black" android:textStyle="bold" android:elevation="4dp"/>
+            <Button android:id="@+id/btnErase" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" android:text="❌" android:layout_margin="2dp" android:backgroundTint="#FFA000" android:fontFamily="sans-serif-black" android:textStyle="bold" android:elevation="4dp"/>
+
+        </androidx.gridlayout.widget.GridLayout>
+
+        <!-- Game Controls -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset"
+                android:backgroundTint="#F44336"
+                android:textColor="#FFFFFF"
+                android:fontFamily="sans-serif-black"
+                android:textStyle="bold"
+                android:elevation="4dp" /> <!-- Changed: Game button style (red) + elevation -->
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

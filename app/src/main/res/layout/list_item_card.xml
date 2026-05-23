@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This is the layout for a single card -->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardBackgroundColor="@color/design_default_color_secondary_variant"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <!-- The TextView to show the emoji or the question mark -->
+    <!-- We set a minHeight to ensure the card has a good size -->
+    <TextView
+        android:id="@+id/cardEmoji"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:minHeight="60dp"
+        android:text="❓"
+        android:textSize="40sp"
+        tools:text="😀"
+        android:textColor="@android:color/black"/>
+
+</androidx.cardview.widget.CardView>
+
